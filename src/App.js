@@ -136,7 +136,7 @@ export default function App() {
   );
 
   const [temperature, setTemperature] = useState(
-    localStorage.getItem("temperature") || 0
+    localStorage.getItem("temperature") || 0.7
   );
 
   const [promptTemplate, setPromptTemplate] = useState(
