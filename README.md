@@ -1,4 +1,4 @@
-# Automated Mindmapping with OpenAI and Mermaid
+# Automated Mindmapping with GPT and Mermaid
 
 This repository houses a project that enables automatic creation of mindmaps using OpenAI's GPT-3.5-turbo and GPT-4 models, with the support of Mermaid for mindmap visualizations.
 
