@@ -1,0 +1,101 @@
+body {
+  background-color: #a3b4c4;
+  color: #ecf0f1;
+  font-family: "Arial", sans-serif;
+}
+
+div,
+button {
+  margin: 5px;
+}
+
+.App {
+  width: 90%;
+  margin: auto;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  flex: 0 0 48%;
+}
+
+.outputContainer {
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input,
+textarea,
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+button {
+  cursor: pointer;
+  background-color: #098046;
+  color: #ecf0f1;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2ecc71;
+}
+
+textarea {
+  min-height: 50px;
+  height: 15vh;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-button {
+  background-color: #573f54;
+}
+
+.tab-button:hover {
+  background-color: #7e135e;
+}
+
+.outer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Add this */
+  padding: 0; /* Ensure no padding interferes */
+  margin: 0; /* Ensure no margin interferes */
+}
+
+.outer > div {
+  width: 100%; /* Make sure parent of textarea takes up 100% width */
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box; /* This makes sure that padding does not affect the width */
+}
+
+.fa.icon-container {
+  color: inherit !important;
+  font-size: inherit !important;
+}
