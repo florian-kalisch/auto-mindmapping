@@ -2,11 +2,14 @@
 
 This repository houses a project that enables automatic creation of mindmaps using OpenAI's GPT-3.5-turbo and GPT-4 models, with the support of Mermaid for mindmap visualizations.
 
+![auto-mindmapping-2](https://github.com/florian-kalisch/auto-mindmapping/assets/5501881/4921a32e-7861-476d-be00-f00cb81f12ba)
+
+
 ## About
 
 The system comes with built-in system prompts for brainstorming, text summarization, and cause/effect visualization. The integration of GPT models provides the power of language understanding, while Mermaid enables rich and customizable visual representations.
 
-What does the project say about advantages and disadvantages of automated mindmapping (note that GitHub doesn't seem to support the icons):
+What does the project say about advantages and disadvantages of automated mindmapping (note that GitHub doesn't seem to support the icons)? This is the generated mermaid code (available under Output):
 
 ```mermaid
 mindmap
@@ -79,6 +82,12 @@ Before you begin, ensure you have met the following requirements:
 
 ## Getting Started
 
+### Online
+
+The fastest way would be [https://florian-kalisch.github.io/auto-mindmapping/](https://florian-kalisch.github.io/auto-mindmapping/)
+
+### Offline
+
 To start using the project, follow these steps:
 
 1. Clone the repository:
@@ -103,6 +112,26 @@ yarn start
 
 Your application should be running on
 [localhost:3000/auto-mindmapping](http://localhost:3000/auto-mindmapping)
+
+## Usage
+
+### Settings
+Under the **Settings** tab you have to enter your OpenAI API token. The default model is **gpt-3.5-turbo**. If you have access to **GPT-4**, you can select it under Model. Note that the model entries are not created based on your available models.
+
+
+You can set **max tokens** and **temperature** based on your needs. For brainstorming a higher **temperature** might be good.
+
+
+**Prompt Template** shows you the system prompt. You can customize it to achieve more or better results (will be saved to localStorage).
+
+### Mindmapping
+With **Prompt** you can input your request. You can ask "Brainstorming for weekend activities on a sunny weekend" and get a mindmap for this topic. You can input text and you get a mind map summarizing the text. You can ask for "Mindmap for: What are the consequences if it rains." and you see what might happen then.
+
+
+Sometimes the output contains the typical GPT chatter text. In this case, Mermaid does not recognize valid syntax. To avoid this, the streamed text would need to be edited/cleaned up, or at least some post-processing would need to be done. This is currently missing. To work around this problem, you can simply try again. It might also be helpful to include "mind map" in your command prompt.
+
+
+To save your result, you can either copy the mermaid code from "Output" or save the image.
 
 ## Further Reading
 Please take a look at the following resources to better understand the project:
