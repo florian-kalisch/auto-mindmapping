@@ -72,14 +72,6 @@ Please note that GPT-4 access is currently limited to the waitlist, so you would
 - When saving the image, the Font Awesome icons might look different from what is shown on the screen.
 - Due to iOS limitations the text area elements can't be resized
 
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-- You have installed the latest version of [Node.js and npm](https://nodejs.org/en/download/).
-- You have a recent version of [Yarn](https://classic.yarnpkg.com/en/docs/install) installed.
-- You have access to OpenAI's GPT-3.5-turbo or GPT-4 models.
-
 ## Getting Started
 
 ### Online
@@ -87,6 +79,16 @@ Before you begin, ensure you have met the following requirements:
 The fastest way would be [https://florian-kalisch.github.io/auto-mindmapping/](https://florian-kalisch.github.io/auto-mindmapping/)
 
 ### Offline
+
+#### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- You have installed the latest version of [Node.js and npm](https://nodejs.org/en/download/).
+- You have a recent version of [Yarn](https://classic.yarnpkg.com/en/docs/install) installed.
+- You have access to OpenAI's GPT-3.5-turbo or GPT-4 models.
+
+#### Clone and run
 
 To start using the project, follow these steps:
 
