@@ -120,6 +120,77 @@ export default class Mermaid extends React.Component {
       });
   }
 
+  async saveAsSVG() {
+    let mermaidContainer = document.getElementById("mermaidChart");
+    if (!mermaidContainer) {
+      throw new Error("No Mermaid container element found");
+    }
+
+    mermaidContainer = await replaceFontAwesomeIconsWithInlineSVGs(
+      mermaidContainer
+    );
+
+    const clonedMermaidContainer = mermaidContainer.cloneNode(true);
+
+    // Find all foreignObjects within the clonedMermaidContainer and scale them down
+    const foreignObjects = clonedMermaidContainer.getElementsByTagName(
+      "foreignObject"
+    );
+    for (let fo of foreignObjects) {
+      let svg = fo.querySelector("svg");
+      let scale = 0.8; // Change this to scale the SVG elements
+
+      // Scale the dimensions and transform the SVG elements
+      let oldWidth = parseFloat(fo.getAttribute("width"));
+      let oldHeight = parseFloat(fo.getAttribute("height"));
+      fo.setAttribute("width", oldWidth * scale + "px");
+      fo.setAttribute("height", oldHeight * scale + "px");
+
+      // Center the SVG elements vertically
+      let yAttribute = parseFloat(fo.getAttribute("y") || "0");
+      let yOffset = (oldHeight * (1 - scale)) / 2;
+      fo.setAttribute("y", yAttribute + yOffset + "px");
+
+      if (svg) {
+        svg.style.transform = `scale(${scale})`;
+        svg.style.transformOrigin = "center";
+        let div = svg.parentElement;
+        if (div) {
+          div.style.marginTop =
+            parseFloat(div.style.marginTop || "0") * scale + "px";
+        }
+      }
+    }
+
+    clonedMermaidContainer.style.display = "none";
+    document.body.appendChild(clonedMermaidContainer);
+
+    clonedMermaidContainer.style.transformOrigin = "top left";
+    clonedMermaidContainer.style.display = "block";
+
+    try {
+      const svgData = new XMLSerializer().serializeToString(
+        clonedMermaidContainer
+      );
+      const preface = '<?xml version="1.0" standalone="no"?>\r\n';
+      const svgBlob = new Blob([preface, svgData], {
+        type: "image/svg+xml;charset=utf-8"
+      });
+      const svgUrl = URL.createObjectURL(svgBlob);
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = svgUrl;
+      downloadLink.download = "chart.svg";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      document.body.removeChild(clonedMermaidContainer);
+    } catch (error) {
+      document.body.removeChild(clonedMermaidContainer);
+      throw new Error("Error generating SVG file: ", error);
+    }
+  }
+
   constructor(props) {
     super(props);
     this.saveAsPNG = this.saveAsPNG.bind(this);
@@ -128,7 +199,10 @@ export default class Mermaid extends React.Component {
   render() {
     return (
       <>
-        <button onClick={() => this.saveAsPNG()}>Save Image</button>
+        <div className="buttonContainer">
+          <button onClick={() => this.saveAsPNG()}>Save PNG Image</button>
+          <button onClick={() => this.saveAsSVG()}>Save SVG Image</button>
+        </div>
         <div id="mermaidChart" className="mermaid">
           {this.props.chart}
         </div>
