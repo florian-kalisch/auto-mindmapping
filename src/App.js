@@ -50,14 +50,33 @@ function SettingsTab({
     localStorage.setItem("promptTemplate", e.target.value);
   };
 
+  function extractIntFromString(str) {
+    const result = str.match(/\d+/);
+    if (result) {
+      return parseInt(result[0], 10);
+    } else {
+      return 0;
+    }
+  };
+
+  function extractFloatFromString(str) {
+    str = str.replace(',', '.'); // Replace comma with period as a decimal separator
+    const result = str.match(/^-?(\d+)?(\.\d*)?/); // Match optional digits before and after the decimal point
+    if (result) {
+      return result[0] === '' ? '0' : result[0]; // Return '0' if the input is an empty string
+    } else {
+      return '0';
+    }
+  }
+
   const handleMaxTokensChange = (e) => {
-    let maxTokens = e.target.value !== "" ? parseInt(e.target.value, 10) : 0;
+    let maxTokens = extractIntFromString(e.target.value);
     setMaxTokens(maxTokens);
     localStorage.setItem("maxTokens", maxTokens);
   };
 
   const handleTemperatureChange = (e) => {
-    let temperate = e.target.value !== "" ? e.target.value : "0";
+    let temperate = extractFloatFromString(e.target.value);
     setTemperature(temperate);
     localStorage.setItem("temperate", temperate);
   };
