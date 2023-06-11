@@ -130,7 +130,7 @@ You can set **max tokens** and **temperature** based on your needs. For brainsto
 With **Prompt** you can input your request. You can ask "Brainstorming for weekend activities on a sunny weekend" and get a mindmap for this topic. You can input text and you get a mind map summarizing the text. You can ask for "Mindmap for: What are the consequences if it rains." and you see what might happen then.
 
 
-Sometimes the output contains the typical GPT chatter text. In this case, Mermaid does not recognize valid syntax. To avoid this, the streamed text would need to be edited/cleaned up, or at least some post-processing would need to be done. This is currently missing. To work around this problem, you can simply try again. It might also be helpful to include "mind map" in your command prompt.
+Sometimes the output contains the typical GPT chatter text. In this case, Mermaid does not recognize valid syntax. To avoid this, the streamed text would need to be edited/cleaned up, or at least some post-processing would need to be done. This is currently missing. To work around this problem, you can simply try again. It might also be helpful to include "brainstorm" or "mind map" in your command prompt.
 
 
 To save your result, you can either copy the mermaid code from "Output" or save the image.
