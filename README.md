@@ -58,7 +58,7 @@ mindmap
 Please note that GPT-4 access is currently limited to the waitlist, so you would need to have access to use this model in the system.
 
 ## Features
-- Utilizes GPT-3.5-turbo and GPT-4 models for mindmap generation
+- Utilizes GPT-3.5-turbo, gpt-3.5-turbo-16k and GPT-4 models for mindmap generation
 - Supports prompts for brainstorming, text summarization, and cause/effect visualizations
 - Outputs mindmaps in Mermaid syntax
 - Provides a visual representation of mindmaps
@@ -76,6 +76,14 @@ Please note that GPT-4 access is currently limited to the waitlist, so you would
 
 ### Online
 
+#### Prerequisites
+
+Ensure you have met the following requirements:
+
+- You have access to OpenAI's GPT-3.5-turbo, gpt-3.5-turbo-16k or GPT-4 models.
+
+#### Quickstart
+
 The fastest way would be [https://florian-kalisch.github.io/auto-mindmapping/](https://florian-kalisch.github.io/auto-mindmapping/)
 
 ### Offline
@@ -86,7 +94,7 @@ Before you begin, ensure you have met the following requirements:
 
 - You have installed the latest version of [Node.js and npm](https://nodejs.org/en/download/).
 - You have a recent version of [Yarn](https://classic.yarnpkg.com/en/docs/install) installed.
-- You have access to OpenAI's GPT-3.5-turbo or GPT-4 models.
+- You have access to OpenAI's GPT-3.5-turbo, gpt-3.5-turbo-16k or GPT-4 models.
 
 #### Clone and run
 
