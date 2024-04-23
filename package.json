@@ -1,10 +1,11 @@
 {
   "name": "auto-mindmapping",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "homepage": "https://florian-kalisch.github.io/auto-mindmapping/",
+  "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.4.0",
     "@fortawesome/free-regular-svg-icons": "6.4.0",
