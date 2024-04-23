@@ -43,8 +43,10 @@ function SettingsTab({
   maxTokens,
   setMaxTokens,
   temperature,
-  setTemperature
+  setTemperature,
 }) {
+  const [localTemperature, setLocalTemperature] = useState(String(temperature));
+
   const handlePromptTemplateChange = (e) => {
     setPromptTemplate(e.target.value);
     localStorage.setItem("promptTemplate", e.target.value);
@@ -57,15 +59,15 @@ function SettingsTab({
     } else {
       return 0;
     }
-  };
+  }
 
   function extractFloatFromString(str) {
-    str = str.replace(',', '.'); // Replace comma with period as a decimal separator
+    str = str.replace(",", "."); // Replace comma with period as a decimal separator
     const result = str.match(/^-?(\d+)?(\.\d*)?/); // Match optional digits before and after the decimal point
     if (result) {
-      return result[0] === '' ? '0' : result[0]; // Return '0' if the input is an empty string
+      return result[0] === "" ? 0 : parseFloat(result[0]); // Return '0' if the input is an empty string
     } else {
-      return '0';
+      return 0;
     }
   }
 
@@ -76,9 +78,26 @@ function SettingsTab({
   };
 
   const handleTemperatureChange = (e) => {
-    let temperate = extractFloatFromString(e.target.value);
-    setTemperature(temperate);
-    localStorage.setItem("temperate", temperate);
+    const input = e.target.value;
+    setLocalTemperature(input); // Always update the local input field
+
+    const parsedTemperature = extractFloatFromString(input);
+    if (!isNaN(parsedTemperature) && input !== "") {
+      setTemperature(parsedTemperature);
+      localStorage.setItem("temperature", parsedTemperature);
+    }
+  };
+
+  const handleTemperatureBlur = () => {
+    // When user leaves the input field, revert to the last valid number if necessary
+    const parsedTemperature = parseFloat(localTemperature);
+    if (isNaN(parsedTemperature)) {
+      setLocalTemperature(String(temperature));
+    } else {
+      setLocalTemperature(String(parsedTemperature));
+      setTemperature(parsedTemperature);
+      localStorage.setItem("temperature", parsedTemperature);
+    }
   };
 
   return (
@@ -102,6 +121,7 @@ function SettingsTab({
           onChange={(e) => setModel(e.target.value)}
         >
           <option value="gpt-4">gpt-4</option>
+          <option value="gpt-4-turbo">gpt-4-turbo</option>
           <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
           <option value="gpt-3.5-turbo-16k">gpt-3.5-turbo-16k</option>
         </select>
@@ -119,13 +139,14 @@ function SettingsTab({
       </div>
 
       <div>
-        <label htmlFor="temperature">temperature:</label>
+        <label htmlFor="temperature">Temperature:</label>
         <input
           type="text"
           id="temperature"
           name="temperature"
-          value={temperature}
+          value={localTemperature}
           onChange={handleTemperatureChange}
+          onBlur={handleTemperatureBlur} // Ensure valid number on exit
         />
       </div>
 
@@ -225,32 +246,32 @@ Only one root, use free FontAwesome icons, and follow node types "[", "(". No ne
   async function callOpenAi() {
     setResult("");
 
-    console.log(temperature);
+    //console.log(temperature);
     let url = "https://api.openai.com/v1/chat/completions";
     let data = {
       model: model,
       messages: [
         {
           role: "system",
-          content: promptTemplate
+          content: promptTemplate,
         },
         {
           role: "user",
-          content: prompt
-        }
+          content: prompt,
+        },
       ],
       stream: true,
       max_tokens: maxTokens,
-      temperature: Number(temperature)
+      temperature: Number(temperature),
     };
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     if (!response.ok) {
@@ -315,13 +336,13 @@ Only one root, use free FontAwesome icons, and follow node types "[", "(". No ne
         } catch (error) {
           console.error("Could not JSON parse stream message", {
             message,
-            error
+            error,
           });
         }
       }
     }
 
-    console.log("before processString");
+    //console.log("before processString");
     // Set the final state after the loop ends if it hasn't been set yet
     if (
       !resultString.includes("\n") &&
