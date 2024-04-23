@@ -55,17 +55,14 @@ mindmap
 
 [view at mermaid.live](https://mermaid.live/edit#pako:eNqNVctu20AM_JWFTi0Q_YBvAdJDgBgommPVA7WiJNb7UJZcO26Qfy9XdprYwAY9WJD3MRwOh9RLY-OAzabxFAYPSxc6STHKl665zRI9CA5mq3tmC8tCYTKZy_MB0oT6DFMGfdkqiOOu-Vrud_JTbw97CKJ7uvrrtLrZkI3hywhmhFbm7Htu83K-0pWQ38aRLGEQAxpRyGPLsNd4_5CvUKyLdvcR4dbanJT0CqDnmFgKXkLOTriKM6PdtUPMvcMLQsDkjsZmVi3oD-j2igwDLFL-VQHjxB-B7v2S4h4LJ-egj8qRYjiz9D4HsutKDS8zpgvAx7wsMQkbm1Bv7tHITGFXalNAaUAwEwZMn8I6mmbps-uvNERmesuVZ9AQn-S6HmjByQU_C26Va4zJuNUtAwgYxnoV8HnRgC2kFA98DagmJC0BslHnQDCop1IdyTrwa-qtJFKbXtb1PghOxSdsDiSziTJjMhKj4zXnxYEocc914cLu3ex3xPB_fh_iIXwk8gOfMqk51aCO3u315uIiWY1C2euBL_L6HovbCdwq-5JoD_Z4qiIqJMmxNIXFFLheTUI3XKt_hwuGoXSSuvYpgytQcdTKnieALxOghtknoIu0t3A0IYqx2kY5oQkZlNVJe869OBTCKkUYfmtDfsR7UGuUSdUfze29yco0sShYaQdlqVcFn6WGNzlgRq4L2ROwoaDY7bmn1k4O5Uw1Z_W_5tSyNgJWSj5l7QzjVRxFKqdXAfIyFGfWgA8Jg52v1ezRaPugDrwyCqIhvzj0b6N0DaG_qpfKVEot03RRpgewu6LfonLGoGJIzHYuSrwn39w0HpMGGPQr8tIFY7pGu8nruNjo64Aj6OTtmi686lHQj8rjMdhmIynjTXPK9Y5Au9E3mxEc4-tfWGtgMg)
 
-Please note that GPT-4 access is currently limited to the waitlist, so you would need to have access to use this model in the system.
-
 ## Features
-- Utilizes GPT-3.5-turbo, gpt-3.5-turbo-16k and GPT-4 models for mindmap generation
+- Utilizes gpt-3.5-turbo, gpt-3.5-turbo-16k, gpt-4, gpt-4-turbo models for mindmap generation
 - Supports prompts for brainstorming, text summarization, and cause/effect visualizations
 - Outputs mindmaps in Mermaid syntax
 - Provides a visual representation of mindmaps
 - Offers a convenient way to save generated mindmap images
 
 ## Known Limitations
-- GPT-4 can only be used if you have access.
 - The system may sometimes produce inaccurate information due to the current limitations of Large Language Models (LLMs).
 - There might be occasional inconsistencies in style.
 - Sometimes, the output isn't valid Mermaid syntax (you can then edit the mermaid code under output).
@@ -78,9 +75,9 @@ Please note that GPT-4 access is currently limited to the waitlist, so you would
 
 #### Prerequisites
 
-Ensure you have met the following requirements:
+Ensure you have access to OpenAI's API with models like gpt-3.5-turbo, gpt-3.5-turbo-16k, gpt-4, gpt-4-turbo.
 
-- You have access to OpenAI's GPT-3.5-turbo, gpt-3.5-turbo-16k or GPT-4 models.
+It should be obvious, but: Using the API will result in request-based costs (it is not part of the ChatGPT / Subscription).
 
 #### Quickstart
 
@@ -94,7 +91,9 @@ Before you begin, ensure you have met the following requirements:
 
 - You have installed the latest version of [Node.js and npm](https://nodejs.org/en/download/).
 - You have a recent version of [Yarn](https://classic.yarnpkg.com/en/docs/install) installed.
-- You have access to OpenAI's GPT-3.5-turbo, gpt-3.5-turbo-16k or GPT-4 models.
+- Ensure you have access to OpenAI's API with models like gpt-3.5-turbo, gpt-3.5-turbo-16k, gpt-4, gpt-4-turbo.
+
+It should be obvious, but: Using the API will result in request-based costs (it is not part of the ChatGPT / Subscription).
 
 #### Clone and run
 
@@ -126,11 +125,9 @@ Your application should be running on
 ## Usage
 
 ### Settings
-Under the **Settings** tab you have to enter your OpenAI API token. The default model is **gpt-3.5-turbo**. If you have access to **GPT-4**, you can select it under Model. Note that the model entries are not created based on your available models.
+Under the **Settings** tab you have to enter your OpenAI API token. The default model is **gpt-3.5-turbo**.
 
-
-You can set **max tokens** and **temperature** based on your needs. For brainstorming a higher **temperature** might be good.
-
+You can set **max tokens** and **temperature** based on your needs (will be saved to localStorage). For brainstorming a higher **temperature** might be good.
 
 **Prompt Template** shows you the system prompt. You can customize it to achieve more or better results (will be saved to localStorage).
 
