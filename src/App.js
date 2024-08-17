@@ -120,7 +120,7 @@ function SettingsTab({
           value={model}
           onChange={(e) => setModel(e.target.value)}
         >
-          <option value="gpt-4o-mini" selected>gpt-4o-mini</option>
+          <option value="gpt-4o-mini">gpt-4o-mini</option>
           <option value="gpt-4o">gpt-4o</option>
           <option value="gpt-4-turbo">gpt-4-turbo</option>
           <option value="gpt-4">gpt-4</option>
@@ -174,7 +174,7 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState("Mindmapping");
   const [token, setToken] = useState("");
-  const [model, setModel] = useState("gpt-3.5-turbo");
+  const [model, setModel] = useState("gpt-4o-mini");
 
   const [maxTokens, setMaxTokens] = useState(
     localStorage.getItem("maxTokens") || 2000
