@@ -1,3 +1,5 @@
+
+
 # Automated Mindmapping with GPT and Mermaid
 
 This repository houses a project that enables automatic creation of mindmaps using OpenAI's GPT-3.5-turbo and GPT-4 models, with the support of Mermaid for mindmap visualizations.
@@ -125,7 +127,7 @@ Your application should be running on
 ## Usage
 
 ### Settings
-Under the **Settings** tab you have to enter your OpenAI API token. The default model is **gpt-3.5-turbo**.
+Under the **Settings** tab you have to enter your OpenAI API token. The default model is **gpt-4o-mini**.
 
 You can set **max tokens** and **temperature** based on your needs (will be saved to localStorage). For brainstorming a higher **temperature** might be good.
 
